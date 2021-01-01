@@ -1,9 +1,11 @@
+# Notice
+
 This Repo contains a fork of @jrottenberg's amazing FFMPEG docker repository.
 
-Changes include:
+## Changes include:
 
-* Add HAP support for FFMPEG 4.1 Nvidia contaier
-* Ensure FFMPEG 4.1 properly supports MXF Motion JPEG 2000 codec (4.2, 4.3 and newer appear to have issues)
+* Add HAP support for FFMPEG 4.1 Nvidia container
+* Ensure FFMPEG 4.1 properly supports MXF / OP1/A Motion JPEG 2000 codec (4.2, 4.3 and newer appear to have decode issues)
 * Keep NVidia CUDA / Dev libs available for downstream docker containers to leverage.
 
 The intent of this repository is to provide a baseline Docker useful for:
