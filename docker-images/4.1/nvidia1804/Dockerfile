@@ -94,6 +94,7 @@ RUN      buildDeps="autoconf \
                     curl \
                     bzip2 \
                     libexpat1-dev \
+		    libsnappy-dev \
                     g++ \
                     gcc \
                     git \
@@ -560,6 +561,7 @@ RUN \
         --enable-cuda \
         --enable-cuvid \
         --enable-libnpp \
+	--enable-libsnappy \
         --extra-cflags="-I${PREFIX}/include -I${PREFIX}/include/ffnvcodec -I/usr/local/cuda/include/" \
         --extra-ldflags="-L${PREFIX}/lib -L/usr/local/cuda/lib64 -L/usr/local/cuda/lib32/" && \
         make && \
@@ -598,6 +600,11 @@ COPY --from=build /usr/local/bin /usr/local/bin/
 COPY --from=build /usr/local/share /usr/local/share/
 COPY --from=build /usr/local/lib /usr/local/lib/
 COPY --from=build /usr/local/include /usr/local/include/
+
+COPY --from=build /usr/lib /usr/lib/
+COPY --from=build /usr/include /usr/include
+#COPY --from=build /usr/lib /usr/lib/
+
 
 # Let's make sure the app built correctly
 # Convenient to verify on https://hub.docker.com/r/jrottenberg/ffmpeg/builds/ console output
