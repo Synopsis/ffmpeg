@@ -1,3 +1,18 @@
+This Repo contains a fork of @jrottenberg's amazing FFMPEG docker repository.
+
+Changes include:
+
+* Add HAP support for FFMPEG 4.1 Nvidia contaier
+* Ensure FFMPEG 4.1 properly supports MXF Motion JPEG 2000 codec (4.2, 4.3 and newer appear to have issues)
+* Keep NVidia CUDA / Dev libs available for downstream docker containers to leverage.
+
+The intent of this repository is to provide a baseline Docker useful for:
+* Hardware Acceelerated video processing using FFMPEG
+* GPU accelerated post processing
+* Base image for Machine Learning video workflows that want HWAccel support and variant codecs.
+
+Please note only FFMPEG 4.1 / NVidia is supported until further notice.
+
 # FFmpeg Docker image
 
  [![Docker Stars](https://img.shields.io/docker/stars/jrottenberg/ffmpeg.svg?style=plastic)](https://registry.hub.docker.com/v2/repositories/jrottenberg/ffmpeg/stars/count/) [![Docker pulls](https://img.shields.io/docker/pulls/jrottenberg/ffmpeg.svg?style=plastic)](https://registry.hub.docker.com/v2/repositories/jrottenberg/ffmpeg/)
