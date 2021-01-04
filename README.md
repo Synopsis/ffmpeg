@@ -1,4 +1,17 @@
-# Notice
+# Machine Learning Docker Images for video research
+
+This repo contains a set of Docker Images which support
+
+* FFMPEG built with NVEnc and additional GPU codecs enabled (HAP)
+* Build on top of standard ML Base docker images, such as Pytorch GPU from Nvidia and ONNX GPU from Microsoft.
+
+Please see the Dockerfiles at :
+
+[FFMPEG 4.1 - Pytorch GPU](https://github.com/Synopsis/ffmpeg/blob/master/docker-images/4.1/nvidia2012Pytorch/Dockerfile)
+
+[FFMPEG 4.1 - ONNX GPU](https://github.com/Synopsis/ffmpeg/tree/master/docker-images/4.1/nvidia2012ONNX/Dockerfile)
+
+## Notice
 
 This Repo contains a fork of @jrottenberg's amazing FFMPEG docker repository.
 
@@ -14,6 +27,10 @@ The intent of this repository is to provide a baseline Docker useful for:
 * Base image for Machine Learning video workflows that want HWAccel support and variant codecs.
 
 Please note only FFMPEG 4.1 / NVidia is supported until further notice.
+
+-----
+# Original Documentation: 
+-----
 
 # FFmpeg Docker image
 
