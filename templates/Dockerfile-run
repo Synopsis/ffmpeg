@@ -1,3 +1,23 @@
+## libvmaf https://github.com/Netflix/vmaf
+RUN \
+        if which meson || false; then \
+                echo "Building VMAF." && \
+                DIR=/tmp/vmaf && \
+                mkdir -p ${DIR} && \
+                cd ${DIR} && \
+                curl -sLO https://github.com/Netflix/vmaf/archive/v${LIBVMAF_VERSION}.tar.gz && \
+                tar -xz --strip-components=1 -f v${LIBVMAF_VERSION}.tar.gz && \
+                cd /tmp/vmaf/libvmaf && \
+                meson build --buildtype release --prefix=${PREFIX} && \
+                ninja -vC build && \
+                ninja -vC build install && \
+                mkdir -p ${PREFIX}/share/model/ && \
+                cp -r /tmp/vmaf/model/* ${PREFIX}/share/model/ && \
+                rm -rf ${DIR}; \
+        else \
+                echo "VMAF skipped."; \
+        fi
+
 ## opencore-amr https://sourceforge.net/projects/opencore-amr/
 RUN \
         DIR=/tmp/opencore-amr && \
@@ -25,9 +45,9 @@ RUN \
         DIR=/tmp/x265 && \
         mkdir -p ${DIR} && \
         cd ${DIR} && \
-        curl -sL https://download.videolan.org/pub/videolan/x265/x265_${X265_VERSION}.tar.gz  | \
+        curl -sL https://github.com/videolan/x265/archive/refs/tags/${X265_VERSION}.tar.gz | \
         tar -zx && \
-        cd x265_${X265_VERSION}/build/linux && \
+        cd x265-${X265_VERSION}/build/linux && \
         sed -i "/-DEXTRA_LIB/ s/$/ -DCMAKE_INSTALL_PREFIX=\${PREFIX}/" multilib.sh && \
         sed -i "/^cmake/ s/$/ -DENABLE_CLI=OFF/" multilib.sh && \
         ./multilib.sh && \

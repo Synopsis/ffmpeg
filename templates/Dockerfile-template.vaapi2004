@@ -18,6 +18,8 @@ FROM base as build
 
 ENV         %%ENV%%
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN      buildDeps="autoconf \
                     automake \
                     cmake \
@@ -30,6 +32,7 @@ RUN      buildDeps="autoconf \
                     gperf \
                     libtool \
                     make \
+                    meson \
                     nasm \
                     perl \
                     pkg-config \
